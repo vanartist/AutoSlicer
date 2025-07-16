@@ -1,0 +1,81 @@
+AutoSlicer
+
+    AutoSlicer is an automated pipeline for medical image processing,
+    specifically designed for head and neck CT data.
+    It performs DICOM-to-NIfTI conversion, organ segmentation using TotalSegmentator,
+    skin label estimation, physical property computation (mass, volume, center of mass, inertia tensor),
+    VTK mesh generation, and visualization,
+    including transformation into the Frankfort anatomical coordinate system.
+
+Features
+
+    AutoSlicer provides the following core functionalities:
+    DICOM → NIfTI conversion
+    Whole-body segmentation using TotalSegmentator
+    Skin segmentation using HU thresholds
+    Mass, volume, center of mass, and inertia tensor calculation
+    Coordinate transformation to Frankfort anatomical reference
+    Head and neck separation
+    VTK mesh generation and 3D visualization
+    Advanced operations: label filtering, connected component analysis, planar cutting
+
+
+Installation
+
+    pip install -r requirements.txt
+
+Input
+    A folder contains all the DICOM files. The workspace(final results folder name)should be assigned.
+    For example:
+
+    src\data
+        1.dicom
+        2.dicom
+        ...
+        500.dicom
+
+Output
+
+    JSON Output
+
+    head_inertia_parameters_global_reference.json
+    head_inertia_parameters_frankfort_reference.json
+    neck_inertia_parameters_global_reference.json
+    neck_inertia_parameters_frankfort_reference.json
+    Each file contains:
+
+    Volume (cm³)
+    Mass (kg)
+    Center of mass (in image, voxel, DICOM RAS, and Frankfort space)
+    Inertia tensor in both mm² and cm²
+    Principal moments and axes of inertia
+
+    VTK Models
+    head_visualization.vtk
+    neck_visualization.vtk
+    These can be loaded into software like 3D Slicer or ParaView.
+
+    Coordinate System JSON
+
+    PrincipalAxes_global_reference.mrk.json
+    head_frankfort_reference.mrk.json
+    neck_frankfort_reference.mrk.json
+    These files define the anatomical coordinate axes in standard Slicer markup format.
+
+Notes
+    The default HU range for skin segmentation is estimated automatically from percentile thresholds, but can be overridden manually.
+
+
+You can connect with bruceyang022059@gmail.com if you have any question.
+
+
+
+## Third-Party Dependencies
+
+This project uses [TotalSegmentator](https://github.com/wasserth/TotalSegmentator), which is licensed under the Apache License 2.0.
+
+TotalSegmentator © 2022 University Hospital Basel and contributors.
+Licensed under the Apache License, Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+
+
+

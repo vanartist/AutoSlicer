@@ -1,0 +1,9 @@
+SimpleITK>=2.2.1
+nibabel>=5.1.0
+numpy>=1.23.0
+torch>=2.0.0
+TotalSegmentator==2.4.0
+matplotlib>=3.7.0
+vtk>=9.2.6
+scipy>=1.10.0
+pydicom>=2.4.0
